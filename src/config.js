@@ -1,5 +1,3 @@
-import useForceUpdate from "use-force-update";
-
 export const contacts = [
   {
     name: "Default Name",
@@ -38,13 +36,12 @@ export const editContact = (contact, id) => {
 
 export const groups = [];
 
-export const addGroup = (newGroup) => {
-  const key = 'groupName';
-  const value = groups.find(obj => obj[key] === newGroup);
-  console.log('from AG', value)
-  if (value != newGroup || value === 'test'){
-  return groups.push(newGroup);
-  }else alert (`invalid group name`)
+export const addGroup = newGroup => {
+  const key = "groupName";
+  const value = groups.find(obj => obj[key] === newGroup.groupName);
+  if (value === undefined) {
+    return groups.push(newGroup);
+  } else alert(`group name already exists`);
 };
 
 export const getGroups = () => {
@@ -52,15 +49,13 @@ export const getGroups = () => {
 };
 
 export const addMember = (name, id) => {
-  console.log('config AM', name, id)
   const key = "groupName";
   const value = groups.find(obj => obj[key] === name);
-  console.log('from bel', value)
-  if (value != undefined) {
-    alert(`contact added to ${name}`)
+  if (value !== undefined) {
+    alert(`contact added to ${name}`);
     return value.members.push(id);
   }
-  return "not found";
+  alert(`Unable to add to group: '${name}'. Please try another group.`);
 };
 
 export const deleteGroup = name => {

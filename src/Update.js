@@ -9,7 +9,6 @@ class Update extends Component {
       name: this.props.location.state.stateContact.name,
       phoneNumber: this.props.location.state.stateContact.phoneNumber,
       email: this.props.location.state.stateContact.email,
-      // status: this.props.location.state.stateContact.status,
       redirect: false,
       id: this.props.location.state.stateContact.id
     };
@@ -22,7 +21,6 @@ class Update extends Component {
   };
 
   handleSubmit = e => {
-    console.log("top of HS");
     e.preventDefault();
     const { redirect, ...contact } = this.state;
 
@@ -62,17 +60,6 @@ class Update extends Component {
             value={this.state.email}
             onChange={e => this.handleChange(e)}
           />
-          {/* <select
-            name="status" 
-            value={this.state.status} 
-            onChange={e => this.handleChange (e)}
-            >
-            <option value=''></option>
-            <option value="prospect">Prospect</option>
-            <option value="contacted">Contacted</option>
-            <option value="Offer Presented">Offer Presented</option>
-            <option value="Closed">Closed</option>
-          </select> */}
           <button type="submit"> Submit </button>&nbsp;
           <Link to="/">
             <button>Cancel</button>

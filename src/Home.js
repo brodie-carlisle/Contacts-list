@@ -4,8 +4,7 @@ import "./App.css";
 import useForceUpdate from "use-force-update";
 import { deleteContact, getGroups, getContacts, addMember } from "./config";
 
-const Home = ({}) => {
-  // const contacts=getContacts()
+const Home = () => {
   const [redirect, setRedirect] = useState(false);
   const [stateContact, setPassContact] = useState();
   const [form, setValues] = useState({
@@ -16,7 +15,6 @@ const Home = ({}) => {
   const forceUpdate = useForceUpdate();
 
   const update = () => {
-    console.log("update");
     return forceUpdate();
   };
 
@@ -25,7 +23,6 @@ const Home = ({}) => {
       ...form,
       [e.target.name]: e.target.value
     });
-  console.log(form);
 
   const contacts = getContacts().map(contact => (
     <div className="contact">
@@ -33,18 +30,15 @@ const Home = ({}) => {
       <div>Email: {contact.email} </div>
       <div>Phone: {contact.phoneNumber}</div>
       <br />
-      {/* <div>Lead Status: {contact.status}</div> */}
-      {/* <div>ID: {contact.id}</div> */}
       <select
         name="groupName"
-        // value={form.groupName}
         onChange={handleChange}
       >
-        <option>---group---</option>
+        <option>--select group--</option>
         {getGroups().map(group => (
           <option>{group.groupName}</option>
         ))}
-      </select>
+      </select>&nbsp;
       <button
         onClick={() => {
           addMember(form.groupName, contact.id);
@@ -64,8 +58,8 @@ const Home = ({}) => {
           handleRedirect(contact);
         }}
       >
-        Edit Lead
-      </button>
+        Edit
+      </button>&nbsp;
 
       <button
         onClick={() => {
@@ -81,7 +75,7 @@ const Home = ({}) => {
   const handleRedirect = contact => {
     setRedirect(true);
     setPassContact(contact);
-    console.log("from handleRedirect", stateContact);
+    
   };
 
   const renderRedirect = () => {
@@ -97,13 +91,12 @@ const Home = ({}) => {
 
       <Link to="/newlead">
         <button>+New Contact</button>
-      </Link>
+      </Link>&nbsp;
       <Link to="/groups">
         <button>+New Group</button>
-      </Link>
+      </Link><br/><br/>
 
-      <div>
-        <br />
+      <div className='contactFlex'>
         {contacts}
       </div>
     </div>

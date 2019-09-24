@@ -6,8 +6,7 @@ import {
   deleteGroup,
   addGroup,
   getGroups,
-  getContacts,
-  addMember
+  getContacts
 } from "./config";
 
 
@@ -18,7 +17,6 @@ const Groups = () => {
   
   const forceUpdate = useForceUpdate();
   const update = () =>{
-    console.log('update')
     return forceUpdate()
   }
 
@@ -33,39 +31,38 @@ const Groups = () => {
       ...form,
       [e.target.name]: e.target.value
     });
-  // console.log(form.contact)
 
   const handleSubmit = e => {
     e.preventDefault();
     addGroup(form);
     setValues({ ...form, groupName: "", members: [] });
-    // forceUpdate();
   };
 
   const groups = getGroups().map(group => (
-    <div>
+    <div className="indivGroup" >
       <h1>{group.groupName} 
+      </h1>
       <Link to="/">
         <button>+Add Contact</button>
-      </Link>
+      </Link>&nbsp;
       <button onClick={() => {deleteGroup(group.groupName); update();}}
-      >Delete Group</button></h1>
-      <div>
+      >Delete Group</button><br/><br/>
+      <div className="contactFlex">
         {group.members.map(list).map(contact => (
           <div className= 'contact'>
             <h3>{contact.name}</h3>
             <div>Email: {contact.email} </div>
-            <div>Phone: {contact.phoneNumber}</div>
+            <div>Phone: {contact.phoneNumber}</div><br/>
           </div>
         ))}
-      </div>
+      </div><br/>
     </div>
   ));
 
  
   return (
     <div className="App">
-      <Link to="/">Home</Link>
+      
 
       <h1>Welcome to Your Groups</h1>
       <form>
@@ -76,17 +73,17 @@ const Groups = () => {
           placeholder="Group Name"
           value={form.groupName}
           onChange={handleChange}
-        ></input>
+        ></input>&nbsp;
         <button type="submit" onClick={e => handleSubmit(e)}>
           Create Group
-        </button>
+        </button>&nbsp;
+        <Link to="/">
+        <button>View Contacts</button>
+      </Link>
       </form>
 
-      <div><br/>
-        <h2>Groups:</h2>{groups}
-        {/* <select>
-      {contacts}
-      </select> */}
+      <div className='groups'>
+        <h1>Groups:</h1>{groups}
       </div>
     </div>
   );
