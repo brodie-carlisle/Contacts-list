@@ -48,7 +48,7 @@ const Home = () => {
         add
       </button>&nbsp;
       <Link to="/groups">
-        <button>View Groups</button>
+        <button>View/Add Groups</button>
       </Link>
 
       <br />
@@ -58,7 +58,7 @@ const Home = () => {
           handleRedirect(contact);
         }}
       >
-        Edit
+        Edit Contact
       </button>&nbsp;
 
       <button
@@ -67,7 +67,7 @@ const Home = () => {
           update();
         }}
       >
-        Delete
+        Delete Contact
       </button>
     </div>
   ));

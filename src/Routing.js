@@ -6,7 +6,7 @@ import Groups from "./Groups"
 import Update from "./Update"
 
 
-function Routing(){
+function Routing(){ 
   return(
     <Switch>
       <Route exact path="/" 
