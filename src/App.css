@@ -1,12 +1,20 @@
 .App {
+
+  /* border-style: solid;
+  border-color: green; */
   text-align: center;
   height: 100% vh;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
 }
-
+.home{
+  /* background-color: rgb(218, 218, 218); */
+  height: 900px;
+}
 .contact{
   border-style:solid;
   width: 18em;
-  
 }
 
 .routing{
@@ -20,6 +28,13 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+.newGroup{
+  /* border-style: solid; */
+  /* display: flex; */
+  flex-direction: column;
+  /* justify-items: flex-start; */
+  align-items: center;
+}
 
 .indivGroup{
   border-style: solid;
@@ -31,9 +46,26 @@
   display: flex;
   flex-direction: column;
   align-content: center;
+  
   margin: 25px 50px 75px 100px;
  
 }
+button{
+  font-size: 15px;
+  border-radius: 4px;
+}
+input{
+  width: 20%;
+  border-style: solid;
+  font-size: 15px;
+}
 
-
-
+select{
+  font-size: 15px;
+}
+.newContact{
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

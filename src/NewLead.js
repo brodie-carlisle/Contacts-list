@@ -34,7 +34,7 @@ class NewLead extends Component {
 
   render() {
     return (
-      <div>
+      <div className="newContact">
         {this.callRedirect()}
         <h1>Create New Contact</h1>
         <form onSubmit={this.handleSubmit}>
@@ -42,6 +42,7 @@ class NewLead extends Component {
             type="input"
             name="name"
             placeholder="Name"
+            required
             value={this.state.name}
             onChange={e => this.handleChange(e)}
           />

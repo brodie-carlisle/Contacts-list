@@ -29,29 +29,31 @@ const Home = () => {
       <h3>{contact.name}</h3>
       <div>Email: {contact.email} </div>
       <div>Phone: {contact.phoneNumber}</div>
-      <br />
+      {/* <br /> */}
       <select
+        className ="select"
         name="groupName"
+        // value={form.groupName}
         onChange={handleChange}
       >
-        <option>--select group--</option>
+        <option >--select group--</option>
         {getGroups().map(group => (
-          <option>{group.groupName}</option>
+          <option >{group.groupName}</option>
         ))}
-      </select>&nbsp;
+      </select>
       <button
         onClick={() => {
           addMember(form.groupName, contact.id);
+          setValues({ ...form, groupName: ""});
+          // console.log(form)
           update();
         }}
       >
         add
-      </button>&nbsp;
+      </button><br/><br/>
       <Link to="/groups">
-        <button>View/Add Groups</button>
+        <button>View/Create New Group</button>
       </Link>
-
-      <br />
       <br />
       <button
         onClick={() => {
@@ -85,7 +87,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="home">
       {renderRedirect()}
       <h1>Welcome to your contacts list</h1>
 
@@ -93,7 +95,7 @@ const Home = () => {
         <button>+New Contact</button>
       </Link>&nbsp;
       <Link to="/groups">
-        <button>+New Group</button>
+        <button>Manage Groups</button>
       </Link><br/><br/>
 
       <div className='contactFlex'>

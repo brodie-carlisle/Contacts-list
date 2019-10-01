@@ -4,13 +4,11 @@ import useForceUpdate from "use-force-update";
 
 import {
   deleteGroup,
+  deleteMember,
   addGroup,
   getGroups,
   getContacts
 } from "./config";
-
-
-
 
 const Groups = () => {
   const [form, setValues] = useState({ groupName: "", members: [] });
@@ -53,6 +51,7 @@ const Groups = () => {
             <h3>{contact.name}</h3>
             <div>Email: {contact.email} </div>
             <div>Phone: {contact.phoneNumber}</div><br/>
+            <button onClick={() => {deleteMember(group.groupName, contact.id); update()}}>Remove </button>
           </div>
         ))}
       </div><br/>
@@ -65,16 +64,18 @@ const Groups = () => {
       
 
       <h1>Welcome to Your Groups</h1>
-      <form>
-        <span>Create New Group </span>
+      <h3>Create New Group </h3>
+      <form className="newGroup" onSubmit={e => handleSubmit(e)}>
         <input
-          type="text"
+          type="input"
           name="groupName"
           placeholder="Group Name"
+          required
           value={form.groupName}
           onChange={handleChange}
+          
         ></input>&nbsp;
-        <button type="submit" onClick={e => handleSubmit(e)}>
+        <button type="submit" >
           Create Group
         </button>&nbsp;
         <Link to="/">

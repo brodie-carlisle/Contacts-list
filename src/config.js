@@ -39,7 +39,7 @@ export const groups = [];
 export const addGroup = newGroup => {
   const key = "groupName";
   const value = groups.find(obj => obj[key] === newGroup.groupName);
-  if (value === undefined) {
+  if (value === undefined ) {
     return groups.push(newGroup);
   } else alert(`group name already exists`);
 };
@@ -49,13 +49,13 @@ export const getGroups = () => {
 };
 
 export const addMember = (name, id) => {
-  const key = "groupName";
-  const value = groups.find(obj => obj[key] === name);
-  if (value !== undefined) {
-    alert(`contact added to ${name}`);
-    return value.members.push(id);
-  }
-  alert(`Unable to add to group: '${name}'. Please try another group.`);
+  const value = groups.find(({ groupName }) => groupName === name);
+  if (value === undefined) {
+    return alert(`Unable to find group: '${name}'. Please try another group.`);
+  } else if (value.members.find(element => element === id) !== undefined) {
+    return alert(`Contact is already in group: '${name}'.`);
+  } else alert("contact added to group");
+  return value.members.push(id);
 };
 
 export const deleteGroup = name => {
@@ -66,3 +66,9 @@ export const deleteGroup = name => {
   }
   return "not found";
 };
+
+export const deleteMember = (name, id) =>{
+  const value = groups.find(({ groupName }) => groupName === name);
+  const index = value.members.findIndex(element => element === id)
+    return value.members.splice(index, 1)
+  }
