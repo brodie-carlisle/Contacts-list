@@ -79,7 +79,7 @@ const Groups = () => {
           Create Group
         </button>&nbsp;
         <Link to="/">
-        <button>View Contacts</button>
+        <button>Return to Contacts</button>
       </Link>
       </form>
 

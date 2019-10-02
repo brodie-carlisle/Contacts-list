@@ -52,7 +52,7 @@ const Home = () => {
         add
       </button><br/><br/>
       <Link to="/groups">
-        <button>View/Create New Group</button>
+        <button>Manage Groups</button>
       </Link>
       <br />
       <button

@@ -19,9 +19,15 @@ export const getContacts = () => {
 };
 
 export const deleteContact = value => {
-  const key = "id";
-  const index = contacts.findIndex(obj => obj[key] === value);
-  if (index !== -1) {
+  // const key = "id";
+  const checkGroups = groups
+    .map(group => group.members)
+    .map(member => member.find(val => val === value))
+    .find(val => val === value);
+  const index = contacts.findIndex(obj => obj["id"] === value);
+  if (checkGroups !== undefined) {
+    alert("Must delete contact from group(s) first");
+  } else {
     return contacts.splice(index, 1);
   }
 };
@@ -39,7 +45,7 @@ export const groups = [];
 export const addGroup = newGroup => {
   const key = "groupName";
   const value = groups.find(obj => obj[key] === newGroup.groupName);
-  if (value === undefined ) {
+  if (value === undefined) {
     return groups.push(newGroup);
   } else alert(`group name already exists`);
 };
@@ -67,8 +73,8 @@ export const deleteGroup = name => {
   return "not found";
 };
 
-export const deleteMember = (name, id) =>{
+export const deleteMember = (name, id) => {
   const value = groups.find(({ groupName }) => groupName === name);
-  const index = value.members.findIndex(element => element === id)
-    return value.members.splice(index, 1)
-  }
+  const index = value.members.findIndex(element => element === id);
+  return value.members.splice(index, 1);
+};
